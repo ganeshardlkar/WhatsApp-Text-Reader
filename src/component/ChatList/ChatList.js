@@ -1,37 +1,26 @@
-import React from 'react'
-import Header from '../Header/Header'
-import SingleChat from '../SingleChat/SingleChat'
+import React from "react";
+import Header from "../Header/Header";
+import SingleChat from "../SingleChat/SingleChat";
+import { useAtom } from "jotai";
+import { initialChatData, nameAtom } from "../../store";
 
-function ChatList() {
-  var totalChats = 10
+function ChatList({ name }) {
+  const [mapData] = useAtom(initialChatData);
+  console.log("mapData", mapData);
+
+  const keysArray = [];
+
   return (
-    <div style={{backgroundColor: '#0a1014', height: '700px', width: '400px'}}>
-        {/* <Header /> */}
-        <div style={{overflowY: 'scroll', height: '700px'}}>
-          <SingleChat />
-          <SingleChat />
-          <SingleChat />
-          <SingleChat />
-          <SingleChat />
-          <SingleChat />
-          <SingleChat />
-          <SingleChat />
-          <SingleChat />
-          <SingleChat />
-          <SingleChat />
-          <SingleChat />
-          <SingleChat />
-          <SingleChat />
-          <SingleChat />
-          <SingleChat />
-          <SingleChat />
-          <SingleChat />
-          <SingleChat />
-          <SingleChat />
-          <SingleChat />
-        </div>
+    <div
+      style={{ backgroundColor: "#0a1014", height: "700px", width: "400px" }}
+    >
+      <div style={{ overflowY: "scroll", height: "700px" }}>
+        {Object.keys(mapData).map((name, index) => (
+          <SingleChat key={index} name={name} />
+        ))}
+      </div>
     </div>
-  )
+  );
 }
 
-export default ChatList
+export default ChatList;
