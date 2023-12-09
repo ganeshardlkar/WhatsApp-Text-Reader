@@ -11,19 +11,6 @@ function App() {
   const [personOneName, setPersonOneName] = useAtom(personOne);
   const [chatData, setChatData] = useAtom(initialChatData);
 
-  // useEffect(() => {
-  //   const fetchApiData = async () => {
-  //     try {
-  //       const data = await fetchData();
-  //       setMessages(data.messages);
-  //       setPersonOneName(data.word);
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   };
-  //   fetchApiData();
-  // }, [setMessages]);
-
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
@@ -37,9 +24,7 @@ function App() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("File upload success:", data);
         setChatData(data.map);
-        console.log("Data =>", data.map);
         setMessages(data.messages);
         setPersonOneName(data.word);
       })

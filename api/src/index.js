@@ -30,22 +30,13 @@ const callFunction = () => {
   word = extractWordsFromFileName(fileName);
 
   map.set(word, messages);
-  console.log(map.size);
   return;
 };
 
-function getLastWord(words) {
-  const index = inputArray.indexOf("with");
-  const wordsAfterWith = inputArray.slice(index + 1);
-  const resultString = wordsAfterWith.join(" ");
-  const resulting = resultString.split(".");
-  return resulting[0];
-}
-
 const extractWordsFromFileName = (fileName) => {
-  const words = fileName.split(" ");
-  const lastWord = words[words.length - 1].split(".");
-  return lastWord[0];
+  trimmedName = fileName.substring(19);
+  actualNameArray = trimmedName.split(".");
+  return actualNameArray[0];
 };
 
 app.get("/", function (req, res) {

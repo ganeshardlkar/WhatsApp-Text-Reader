@@ -3,9 +3,27 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Chat from "../Chat/Chat";
 import { Box } from "@mui/material";
+import { useAtom } from "jotai";
+import { initialChatData, initialShowChat, personOne } from "../../store";
 
 function PersonalChat({ messages }) {
-  return (
+  const [pO] = useAtom(personOne);
+  const [iC] = useAtom(initialShowChat);
+  const [chatDataMap] = useAtom(initialChatData);
+
+  var authorName;
+  var date;
+  var message;
+
+  for (let key in chatDataMap) {
+    if (key === pO) {
+      authorName = pO;
+      date = chatDataMap[key][0].date;
+      message = chatDataMap[key];
+    }
+  }
+
+  return iC == true ? (
     <div
       style={{
         backgroundColor: "grey",
@@ -16,7 +34,7 @@ function PersonalChat({ messages }) {
       }}
     >
       <Header position="fixed" />
-      {messages.map((msg, i = 1) => (
+      {message.map((msg, i = 1) => (
         <Chat
           key={i++}
           author={msg.author}
@@ -25,6 +43,8 @@ function PersonalChat({ messages }) {
         />
       ))}
     </div>
+  ) : (
+    <Box></Box>
   );
 }
 
