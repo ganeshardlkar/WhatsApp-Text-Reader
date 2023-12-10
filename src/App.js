@@ -30,7 +30,11 @@ function App() {
 
   const handleFileUpload = () => {
     const formData = new FormData();
-    formData.append("file", selectedFile);
+    const fileInput = document.getElementById("file-input");
+
+    const selected_file = fileInput.files[0];
+
+    formData.append("file", selected_file);
     fetch("http://localhost:3001/upload", {
       method: "POST",
       body: formData,
@@ -45,7 +49,6 @@ function App() {
         console.error("Error uploading file:", error);
       });
   };
-
   return (
     <Box
       display="flex"
@@ -81,6 +84,7 @@ function App() {
           onChange={handleFileChange}
           accept=".txt,.pdf,.docx"
           style={{ display: "none" }}
+          id="file-input"
         />
         <Button
           size="small"

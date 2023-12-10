@@ -111,9 +111,6 @@ function Chat({ author, date, message }) {
               {message}
             </Typography>
           )}
-          {/* <Typography fontSize="13px" color="#E9EDFF">
-            {message}
-          </Typography> */}
           <Typography
             fontSize="9px"
             marginTop="10px"
@@ -149,9 +146,6 @@ function Chat({ author, date, message }) {
               {message}
             </Typography>
           )}
-          {/* <Typography fontSize="13px" color="#E9EDE9">
-            {message}
-          </Typography> */}
           <Typography
             marginTop="10px"
             marginLeft="20px"

@@ -1,12 +1,17 @@
+const path = require("path");
 const express = require("express");
-const fs = require("node:fs");
+const fs = require("fs");
 const multer = require("multer");
 const whatsapp = require("whatsapp-chat-parser");
-const readline = require("readline");
 
 var cors = require("cors");
 var app = express();
 app.use(cors());
+
+const uploadDir = path.resolve(__dirname, "uploads");
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
 
 app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -25,11 +30,12 @@ var word;
 
 var map = new Map();
 
-const callFunction = () => {
-  const text = fs.readFileSync(fileName, "utf8");
+const callFunction = (filePath) => {
+  const text = fs.readFileSync(filePath, "utf8");
   messages = whatsapp.parseString(text);
-  word = extractWordsFromFileName(fileName);
+  word = extractWordsFromFileName(path.basename(filePath));
   map.set(word, messages);
+  console.log("map", map);
   return;
 };
 
@@ -39,22 +45,17 @@ const extractWordsFromFileName = (fileName) => {
   return actualNameArray[0];
 };
 
-app.get("/", function (req, res) {
-  callFunction();
-  res.send({
-    messages: messages,
-    word: word,
-    map: map,
-  });
-});
-
 app.post("/upload", upload.single("file"), (req, res) => {
   const file = req.file;
-  fileName = file.originalname;
   if (!file) {
     return res.status(400).json({ error: "No file uploaded." });
   }
-  callFunction();
+
+  const uploadedFilePath = path.join(uploadDir, file.originalname);
+
+  fs.writeFileSync(uploadedFilePath, file.buffer);
+
+  callFunction(uploadedFilePath);
   const mapObject = Object.fromEntries(map);
   res.send({
     messages: messages,

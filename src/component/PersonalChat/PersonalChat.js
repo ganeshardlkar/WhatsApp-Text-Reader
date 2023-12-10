@@ -28,7 +28,7 @@ function PersonalChat({ messages }) {
         backgroundImage: `url(${WhatsappImage})`,
         backgroundSize: "cover",
         height: "inherit",
-        maxWidth: "1000px",
+        minWidth: "1000px",
         overflowY: "scroll",
       }}
     >
