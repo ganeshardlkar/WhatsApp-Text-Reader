@@ -2,6 +2,7 @@ const express = require("express");
 const fs = require("node:fs");
 const multer = require("multer");
 const whatsapp = require("whatsapp-chat-parser");
+const readline = require("readline");
 
 var cors = require("cors");
 var app = express();
@@ -28,7 +29,6 @@ const callFunction = () => {
   const text = fs.readFileSync(fileName, "utf8");
   messages = whatsapp.parseString(text);
   word = extractWordsFromFileName(fileName);
-
   map.set(word, messages);
   return;
 };

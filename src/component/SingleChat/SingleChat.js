@@ -22,29 +22,35 @@ function SingleChat({ name }) {
   };
 
   return personName === "" ? (
-    <Box>
-      <Typography color="white">No chats to show</Typography>
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      marginTop="20px"
+    >
+      <Typography color="white">Please upload a .txt file</Typography>
     </Box>
   ) : (
     <Box
-      display="flex"
-      justifyContent="left"
-      alignItems="center"
-      padding="5px"
-      marginTop="2px"
-      borderTop="1px solid grey"
+      paddingLeft="20px"
+      paddingTop="15px"
+      paddingBottom="15px"
+      marginTop="1px"
+      marginInlineStart="20px"
+      marginInlineEnd="20px"
+      borderBottom="1px solid grey"
       style={{
         cursor: "pointer",
       }}
       onClick={() => handleOnChatClick(name)}
     >
-      <Box
+      {/* <Box
         width="50px"
         height="50px"
         marginRight="10px"
         backgroundColor="red"
         borderRadius="50%"
-      ></Box>
+      ></Box> */}
       <Box>
         <Typography color="white">{name}</Typography>
         {/* {lastMessage && lastMessage.author === personName ? (

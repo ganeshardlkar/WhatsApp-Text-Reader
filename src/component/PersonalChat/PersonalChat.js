@@ -1,9 +1,8 @@
 import React from "react";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
 import Chat from "../Chat/Chat";
 import { Box } from "@mui/material";
 import { useAtom } from "jotai";
+import WhatsappImage from "../../whatsapp-image.jpg";
 import { initialChatData, initialShowChat, personOne } from "../../store";
 
 function PersonalChat({ messages }) {
@@ -24,16 +23,15 @@ function PersonalChat({ messages }) {
   }
 
   return iC == true ? (
-    <div
+    <Box
       style={{
-        backgroundColor: "grey",
-        height: "700px",
-        width: "1000px",
+        backgroundImage: `url(${WhatsappImage})`,
+        backgroundSize: "cover",
+        height: "inherit",
+        maxWidth: "1000px",
         overflowY: "scroll",
-        height: "700px",
       }}
     >
-      <Header position="fixed" />
       {message.map((msg, i = 1) => (
         <Chat
           key={i++}
@@ -42,7 +40,7 @@ function PersonalChat({ messages }) {
           message={msg.message}
         />
       ))}
-    </div>
+    </Box>
   ) : (
     <Box></Box>
   );

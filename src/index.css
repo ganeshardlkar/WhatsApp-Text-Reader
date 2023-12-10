@@ -1,0 +1,9 @@
+body::-webkit-scrollbar {
+  width: 1em;
+}
+
+.root {
+  overflow: scroll;
+  scrollbar-color: red orange;
+  scrollbar-width: thin;
+}
