@@ -3,19 +3,16 @@ import { Box, Typography } from "@mui/material";
 
 function EncryptionComp({ message }) {
   return (
-    <Box
-      display="flex"
-      marginTop="10px"
-      justifyContent="center"
-      alignItems="center"
-    >
+    <Box display="flex" justifyContent="center" alignItems="center">
       <Box
-        width="700px"
+        width="60%"
         borderRadius="5px"
         height="auto"
         backgroundColor="#353526"
-        marginBottom="10px"
-        marginTop="10px"
+        paddingLeft="0.1%"
+        paddingRight="0.1%"
+        marginTop="1%"
+        marginBottom="0.1%"
       >
         <Typography
           marginBottom="10px"

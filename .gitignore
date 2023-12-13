@@ -3,10 +3,7 @@
 /node_modules
 /.pnp
 .pnp.js
-WhatsApp Chat with Kartik.txt
-WhatsApp Chat with Abhay.txt
-WhatsApp Chat with Rushab Kle.txt
-WhatsApp Chat with TT Raghavendra PG.txt
+/api/src/uploads
 
 # testing
 /coverage

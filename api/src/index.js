@@ -35,7 +35,6 @@ const callFunction = (filePath) => {
   messages = whatsapp.parseString(text);
   word = extractWordsFromFileName(path.basename(filePath));
   map.set(word, messages);
-  console.log("map", map);
   return;
 };
 

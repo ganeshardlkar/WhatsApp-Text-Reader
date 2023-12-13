@@ -28,7 +28,7 @@ function SingleChat({ name }) {
       alignItems="center"
       marginTop="20px"
     >
-      <Typography color="white">Please upload a .txt file</Typography>
+      <Typography color="white">No chats to show</Typography>
     </Box>
   ) : (
     <Box
@@ -38,9 +38,10 @@ function SingleChat({ name }) {
       marginTop="1px"
       marginInlineStart="20px"
       marginInlineEnd="20px"
-      borderBottom="1px solid grey"
+      // borderBottom="1px solid grey"
       style={{
         cursor: "pointer",
+        borderBottom: "1px solid rgba(80, 80, 80, 50%)",
       }}
       onClick={() => handleOnChatClick(name)}
     >

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import axios from "axios";
 import ChatList from "./component/ChatList/ChatList";
 import PersonalChat from "./component/PersonalChat/PersonalChat";
 import { useAtom } from "jotai";
@@ -13,6 +12,7 @@ import {
   OutlinedInput,
   Typography,
 } from "@mui/material";
+// import "./App.css";
 
 function App() {
   const [isFilePresent, setIsFilePresent] = useState(false);
@@ -31,9 +31,7 @@ function App() {
   const handleFileUpload = () => {
     const formData = new FormData();
     const fileInput = document.getElementById("file-input");
-
     const selected_file = fileInput.files[0];
-
     formData.append("file", selected_file);
     fetch("http://localhost:3001/upload", {
       method: "POST",
@@ -52,20 +50,21 @@ function App() {
   return (
     <Box
       display="flex"
-      flexDirection="column"
       justifyContent="center"
       alignItems="center"
+      position="relative"
+      width="100vw"
+      height="100vh"
+      backgroundColor="#0C1317"
     >
-      <Box
-        height="550px"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <ChatList name={personOneName} />
-        <PersonalChat messages={messages} />
+      <Box width="97.5vw" height="95vh" display="flex" justifyContent="center">
+        <ChatList />
+        <PersonalChat />
       </Box>
       <Box
+        position="absolute"
+        bottom="50px"
+        left="60px"
         height="100px"
         width="250px"
         padding="10px"

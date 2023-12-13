@@ -46,8 +46,8 @@ function Chat({ author, date, message }) {
         backgroundColor="#202C33"
         maxWidth="500px"
         margin="10px"
-        padding="5px"
-        borderRadius="5px"
+        padding="7px"
+        borderRadius="7px"
       >
         {/* {tempAuthorName === author ? (
           <Box
@@ -103,11 +103,11 @@ function Chat({ author, date, message }) {
           maxWidth="inherit"
         >
           {message.length > 100 ? (
-            <Typography fontSize="13px" color="#E9EDE9">
+            <Typography fontSize="14.2px" color="#E9EDE9">
               {message.substring(0, 65) + "..."}
             </Typography>
           ) : (
-            <Typography fontSize="13px" color="#E9EDE9">
+            <Typography fontSize="14.2px" color="#E9EDE9">
               {message}
             </Typography>
           )}
